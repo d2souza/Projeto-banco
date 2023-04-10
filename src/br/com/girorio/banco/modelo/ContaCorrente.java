@@ -1,3 +1,4 @@
+package br.com.girorio.banco.modelo;
 
 public class ContaCorrente extends Conta {
 

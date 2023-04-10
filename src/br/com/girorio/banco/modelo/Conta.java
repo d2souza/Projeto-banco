@@ -1,5 +1,6 @@
+package br.com.girorio.banco.modelo;
 
-public class Conta {
+public abstract class Conta {
 	private double saldo;
 	private int numero;
 	private int agencia;
@@ -8,7 +9,7 @@ public class Conta {
 
 	public Conta(int agencia, int numero) {
 		String numeroConta = Integer.toString(numero);
-		String agenciaConta =  Integer.toString(agencia);
+		String agenciaConta = Integer.toString(agencia);
 		if (numeroConta.length() != 5) {
 			System.out.println("Numero inválido");
 			return;
@@ -57,14 +58,11 @@ public class Conta {
 		this.saldo += valor;
 	}
 
-	public boolean saca(double valor) {
-		if (this.saldo >= valor) {
-			this.saldo -= valor;
-			System.out.println("Você sacou: " + valor);
-			return true;
+	public void saca(double valor) {
+		if (this.saldo < valor) {
+			throw new SaldoInsuficienteException("Não foi possivel sacar.\nSeu saldo: " + saldo);
 		} else {
-			System.out.println("Você não tem saldo suficiente para realizar esta transação.");
-			return false;
+			this.saldo -= valor;	
 		}
 
 	}

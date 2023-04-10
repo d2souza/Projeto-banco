@@ -1,18 +1,13 @@
+package br.com.girorio.banco.modelo;
 
-public class Funcionario {
+public abstract class Funcionario {
 
 	private String nome;
 	private String cpf;
 	private double salario;
 	protected int numeroDeFaltas;
 	
-	public double getBonificacao() {
-		if (numeroDeFaltas >= 1) {
-			System.out.println("Ta ferrado meu parceiro");
-			return salario * 0;
-		}
-		return salario * 0.1;
-	}
+	public abstract double getBonificacao();
 	
 	public int getNumeroDeFaltas() {
 		return numeroDeFaltas;
